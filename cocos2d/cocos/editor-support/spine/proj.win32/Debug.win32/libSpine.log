@@ -37,12 +37,12 @@
   Triangulator.c
   VertexAttachment.c
   VertexEffect.c
-D:\CocosProjects\Stardew_Valley_Farm\cocos2d\cocos\editor-support\spine\SkeletonJson.c(97,12): warning C4018: “>=”: 有符号/无符号不匹配
-D:\CocosProjects\Stardew_Valley_Farm\cocos2d\cocos\editor-support\spine\SkeletonBinary.c(310,24): warning C4018: “<”: 有符号/无符号不匹配
-D:\CocosProjects\Stardew_Valley_Farm\cocos2d\cocos\editor-support\spine\SkeletonBinary.c(372,24): warning C4018: “<”: 有符号/无符号不匹配
-D:\CocosProjects\Stardew_Valley_Farm\cocos2d\cocos\editor-support\spine\SkeletonBinary.c(484,26): warning C4018: “<”: 有符号/无符号不匹配
-D:\CocosProjects\Stardew_Valley_Farm\cocos2d\cocos\editor-support\spine\SkeletonBinary.c(649,2): warning C4018: “<”: 有符号/无符号不匹配
-D:\CocosProjects\Stardew_Valley_Farm\cocos2d\cocos\editor-support\spine\SkeletonBinary.c(652,2): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\14786\Desktop\期末项目\Stardew_Valley_Farm\cocos2d\cocos\editor-support\spine\SkeletonBinary.c(310,24): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\14786\Desktop\期末项目\Stardew_Valley_Farm\cocos2d\cocos\editor-support\spine\SkeletonJson.c(97,12): warning C4018: “>=”: 有符号/无符号不匹配
+C:\Users\14786\Desktop\期末项目\Stardew_Valley_Farm\cocos2d\cocos\editor-support\spine\SkeletonBinary.c(372,24): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\14786\Desktop\期末项目\Stardew_Valley_Farm\cocos2d\cocos\editor-support\spine\SkeletonBinary.c(484,26): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\14786\Desktop\期末项目\Stardew_Valley_Farm\cocos2d\cocos\editor-support\spine\SkeletonBinary.c(649,2): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\14786\Desktop\期末项目\Stardew_Valley_Farm\cocos2d\cocos\editor-support\spine\SkeletonBinary.c(652,2): warning C4018: “<”: 有符号/无符号不匹配
   AttachmentVertices.cpp
   Cocos2dAttachmentLoader.cpp
   SkeletonAnimation.cpp
@@ -50,7 +50,7 @@ D:\CocosProjects\Stardew_Valley_Farm\cocos2d\cocos\editor-support\spine\Skeleton
   SkeletonRenderer.cpp
   SkeletonTwoColorBatch.cpp
   spine-cocos2dx.cpp
-D:\CocosProjects\Stardew_Valley_Farm\cocos2d\cocos\editor-support\spine\SkeletonBatch.cpp(110,42): warning C4018: “<”: 有符号/无符号不匹配
-D:\CocosProjects\Stardew_Valley_Farm\cocos2d\cocos\editor-support\spine\SkeletonTwoColorBatch.cpp(237,42): warning C4018: “<”: 有符号/无符号不匹配
-D:\CocosProjects\Stardew_Valley_Farm\cocos2d\cocos\editor-support\spine\SkeletonTwoColorBatch.cpp(274,37): warning C4018: “<”: 有符号/无符号不匹配
-  libSpine.vcxproj -> D:\CocosProjects\Stardew_Valley_Farm\proj.win32\Debug.win32\libSpine.lib
+C:\Users\14786\Desktop\期末项目\Stardew_Valley_Farm\cocos2d\cocos\editor-support\spine\SkeletonBatch.cpp(110,42): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\14786\Desktop\期末项目\Stardew_Valley_Farm\cocos2d\cocos\editor-support\spine\SkeletonTwoColorBatch.cpp(237,42): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\14786\Desktop\期末项目\Stardew_Valley_Farm\cocos2d\cocos\editor-support\spine\SkeletonTwoColorBatch.cpp(274,37): warning C4018: “<”: 有符号/无符号不匹配
+  libSpine.vcxproj -> C:\Users\14786\Desktop\期末项目\Stardew_Valley_Farm\proj.win32\Debug.win32\libSpine.lib

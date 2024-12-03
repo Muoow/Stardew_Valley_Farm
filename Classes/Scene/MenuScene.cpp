@@ -1,5 +1,6 @@
 #include "MenuScene.h"
 #include "Button/HoverButton.h"
+#include "TestScene.h"
 
 USING_NS_CC;
 
@@ -26,6 +27,19 @@ bool MenuScene::init()
     background->setPosition(Vec2(screenSize.width / 2, screenSize.height / 2));
     this->addChild(background);
 
+    //----------------------testscene----------------------
+    // 创建一个菜单项（按钮），点击后切换到 TestScene
+    auto goToTestItem = MenuItemFont::create("Go to Test Scene", CC_CALLBACK_1(MenuScene::goToTestScene, this));
+
+    // 创建菜单并添加菜单项
+    auto menu = Menu::create(goToTestItem, nullptr);
+    menu->setPosition(Vec2::ZERO);
+    goToTestItem->setPosition(Vec2(400, 300));  // 按钮的位置
+
+    // 将菜单添加到场景中
+    this->addChild(menu);
+    //----------------------testscene----------------------
+
     // 创建按钮
     auto newGameButton = HoverButton::create("../Resources/Buttons/MenuSceneButtons/CreateButton.png",
         "../Resources/Buttons/MenuSceneButtons/CreateButton.png",
@@ -46,3 +60,9 @@ bool MenuScene::init()
     return true;
 }
 
+// 回调函数，点击按钮后切换到 TestScene
+void MenuScene::goToTestScene(cocos2d::Ref* sender)
+{
+    // 使用 replaceScene 切换到 TestScene
+    Director::getInstance()->replaceScene(TestScene::create());
+}

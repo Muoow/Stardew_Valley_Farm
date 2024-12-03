@@ -12,6 +12,11 @@ public:
     // 初始化场景
     virtual bool init();
 
+    //----------------------testscene----------------------
+    // 切换到 TestScene 的回调函数
+    void goToTestScene(cocos2d::Ref* sender);
+    //----------------------testscene----------------------
+
     // 实现 MenuScene 类的 create 方法
     CREATE_FUNC(MenuScene);
 };
