@@ -1,7 +1,7 @@
 /****************************************************************
  * Project Name:  Stardew_Valley_Farm
  * File Name:     TestScene.cpp
- * File Function: ²âÊÔÓÃ
+ * File Function: æµ‹è¯•ç”¨
  * Author:        sg
  * Update Date:   2024/12/3
  ****************************************************************/
@@ -16,103 +16,103 @@ TestScene::~TestScene() {}
 
 TestScene* TestScene::create()
 {
-    TestScene* ret = new TestScene();
-    if (ret && ret->init()) {
-        ret->autorelease();
-        return ret;
-    }
-    CCLOG("Failed to create TestScene!");
-    delete ret;
-    return nullptr;
+	TestScene* ret = new TestScene();
+	if (ret && ret->init()) {
+		ret->autorelease();
+		return ret;
+	}
+	CCLOG("Failed to create TestScene!");
+	delete ret;
+	return nullptr;
 }
 
-// ¼üÅÌ°´ÏÂÊÂ¼þ´¦Àí
+// é”®ç›˜æŒ‰ä¸‹äº‹ä»¶å¤„ç†
 void TestScene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-    keysPressed.insert(keyCode);  // ¼ÇÂ¼°´ÏÂµÄ¼ü
+	keysPressed.insert(keyCode);  // è®°å½•æŒ‰ä¸‹çš„é”®
 }
 
-// ¼üÅÌÊÍ·ÅÊÂ¼þ´¦Àí
+// é”®ç›˜é‡Šæ”¾äº‹ä»¶å¤„ç†
 void TestScene::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
 {
-    keysPressed.erase(keyCode);  // ÒÆ³ýËÉ¿ªµÄ¼ü
+	keysPressed.erase(keyCode);  // ç§»é™¤æ¾å¼€çš„é”®
 }
 
 bool TestScene::init()
 {
-    // 1. µ÷ÓÃ¸¸ÀàµÄ³õÊ¼»¯
-    if (!Scene::init()) {
-        return false;
-    }
+	// 1. è°ƒç”¨çˆ¶ç±»çš„åˆå§‹åŒ–
+	if (!Scene::init()) {
+		return false;
+	}
 
-    // 2. ´´½¨²¢ÏÔÊ¾Ò»¸ö±êÇ©
-    auto label = Label::createWithSystemFont("Test Scene", "consolas", 36);
-    label->setPosition(Vec2(400, 300));  // ÉèÖÃ±êÇ©Î»ÖÃ
-    this->addChild(label);
+	// 2. åˆ›å»ºå¹¶æ˜¾ç¤ºä¸€ä¸ªæ ‡ç­¾
+	auto label = Label::createWithSystemFont("Test Scene æµ‹è¯•", "consolas", 36);
+	label->setPosition(Vec2(400, 300));  // è®¾ç½®æ ‡ç­¾ä½ç½®
+	this->addChild(label);
 
-    // 3. ´´½¨²¢ÏÔÊ¾Ò»¸ö°´Å¥
-    auto closeButton = MenuItemFont::create("Close", CC_CALLBACK_1(TestScene::closeButtonCallback, this));
-    auto menu = Menu::create(closeButton, nullptr);
-    menu->setPosition(Vec2::ZERO);
-    closeButton->setPosition(Vec2(400, 200));  // ÉèÖÃ°´Å¥Î»ÖÃ
-    this->addChild(menu);
+	// 3. åˆ›å»ºå¹¶æ˜¾ç¤ºä¸€ä¸ªæŒ‰é’®
+	auto closeButton = MenuItemFont::create("Close", CC_CALLBACK_1(TestScene::closeButtonCallback, this));
+	auto menu = Menu::create(closeButton, nullptr);
+	menu->setPosition(Vec2::ZERO);
+	closeButton->setPosition(Vec2(400, 200));  // è®¾ç½®æŒ‰é’®ä½ç½®
+	this->addChild(menu);
 
-    // 4. ´´½¨²¢Ìí¼Ó Player ¶ÔÏó
-    player = Player::create("test", "1");  // ´´½¨ Player
-    if (player == nullptr) {
-        CCLOG("Player creation failed!");
-        return false;  // Èç¹û´´½¨Ê§°Ü£¬·µ»Ø false
-    }
-    player->setPosition(Vec2(400, 150));  // ÉèÖÃ³õÊ¼Î»ÖÃ
-    this->addChild(player);
+	// 4. åˆ›å»ºå¹¶æ·»åŠ  Player å¯¹è±¡
+	player = Player::create("test", "1");  // åˆ›å»º Player
+	if (player == nullptr) {
+		CCLOG("Player creation failed!");
+		return false;  // å¦‚æžœåˆ›å»ºå¤±è´¥ï¼Œè¿”å›ž false
+	}
+	player->setPosition(Vec2(400, 150));  // è®¾ç½®åˆå§‹ä½ç½®
+	this->addChild(player);
 
-    // ¼àÌý¼üÅÌÊÂ¼þ
-    auto listener = EventListenerKeyboard::create();
-    listener->onKeyPressed = CC_CALLBACK_2(TestScene::onKeyPressed, this);
-    listener->onKeyReleased = CC_CALLBACK_2(TestScene::onKeyReleased, this);
-    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
+	// ç›‘å¬é”®ç›˜äº‹ä»¶
+	auto listener = EventListenerKeyboard::create();
+	listener->onKeyPressed = CC_CALLBACK_2(TestScene::onKeyPressed, this);
+	listener->onKeyReleased = CC_CALLBACK_2(TestScene::onKeyReleased, this);
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
 
-    // 5. Ã¿Ö¡¸üÐÂÒ»´Î£¬µ÷ÓÃ update
-    schedule([this](float dt) {
-        this->update(dt);
-        }, "update_key");
+	// 5. æ¯å¸§æ›´æ–°ä¸€æ¬¡ï¼Œè°ƒç”¨ update
+	schedule([this](float dt) {
+		this->update(dt);
+		}, "update_key");
 
-    return true;
+	return true;
 }
 
-// 6. ¸üÐÂÍæ¼ÒµÄÎ»ÖÃ
+// 6. æ›´æ–°çŽ©å®¶çš„ä½ç½®
 void TestScene::update(float dt)
 {
-    if (player) {
-        // ³õÊ¼»¯Ò»¸ö·½ÏòÏòÁ¿
-        Vec2 direction(0, 0);
+	if (player) {
+		// åˆå§‹åŒ–ä¸€ä¸ªæ–¹å‘å‘é‡
+		Vec2 direction(0, 0);
 
-        // ¸ù¾Ý°´ÏÂµÄ¼ü¸üÐÂ·½ÏòÏòÁ¿
-        if (keysPressed.count(EventKeyboard::KeyCode::KEY_W)) {
-            direction.y += 1;  // ÏòÉÏ
-        }
-        if (keysPressed.count(EventKeyboard::KeyCode::KEY_S)) {
-            direction.y -= 1;  // ÏòÏÂ
-        }
-        if (keysPressed.count(EventKeyboard::KeyCode::KEY_A)) {
-            direction.x -= 1;  // Ïò×ó
-        }
-        if (keysPressed.count(EventKeyboard::KeyCode::KEY_D)) {
-            direction.x += 1;  // ÏòÓÒ
-        }
+		// æ ¹æ®æŒ‰ä¸‹çš„é”®æ›´æ–°æ–¹å‘å‘é‡
+		if (keysPressed.count(EventKeyboard::KeyCode::KEY_W)) {
+			direction.y += 1;  // å‘ä¸Š
+		}
+		if (keysPressed.count(EventKeyboard::KeyCode::KEY_S)) {
+			direction.y -= 1;  // å‘ä¸‹
+		}
+		if (keysPressed.count(EventKeyboard::KeyCode::KEY_A)) {
+			direction.x -= 1;  // å‘å·¦
+		}
+		if (keysPressed.count(EventKeyboard::KeyCode::KEY_D)) {
+			direction.x += 1;  // å‘å³
+		}
 
-        // ¹éÒ»»¯·½ÏòÏòÁ¿£¨±£³Ö·½Ïò²»±ä£¬³¤¶ÈÎª1£©
-        if (direction.length() > 0) {
-            direction.normalize();  // ¹éÒ»»¯·½ÏòÏòÁ¿
-        }
+		// å½’ä¸€åŒ–æ–¹å‘å‘é‡ï¼ˆä¿æŒæ–¹å‘ä¸å˜ï¼Œé•¿åº¦ä¸º1ï¼‰
+		if (direction.length() > 0) {
+			direction.normalize();  // å½’ä¸€åŒ–æ–¹å‘å‘é‡
+		}
 
-        // ÒÆ¶¯Íæ¼Ò£¬·½ÏòÊ¸Á¿³ËÒÔËÙ¶È²¢³ËÒÔÊ±¼äÔöÁ¿
-        player->setPosition(player->getPosition() + direction * player->getSpeed() * dt);
-    }
+		// ç§»åŠ¨çŽ©å®¶ï¼Œæ–¹å‘çŸ¢é‡ä¹˜ä»¥é€Ÿåº¦å¹¶ä¹˜ä»¥æ—¶é—´å¢žé‡
+		player->setPosition(player->getPosition() + direction * player->getSpeed() * dt);
+	}
 }
 
-// 7. °´Å¥µã»÷»Øµ÷º¯Êý£¬ÍË³öµ±Ç°³¡¾°
+// 7. æŒ‰é’®ç‚¹å‡»å›žè°ƒå‡½æ•°ï¼Œé€€å‡ºå½“å‰åœºæ™¯
 void TestScene::closeButtonCallback(Ref* sender)
 {
-    Director::getInstance()->popScene();  // ÍË³öµ±Ç°³¡¾°£¬»Øµ½ÉÏÒ»³¡¾°
+	Director::getInstance()->popScene();  // é€€å‡ºå½“å‰åœºæ™¯ï¼Œå›žåˆ°ä¸Šä¸€åœºæ™¯
 }
