@@ -7,3 +7,25 @@ cocos2d/cocos/2d/Release.win32/
 proj.win32/Debug.win32/
 proj.win32/Release.win32/
 proj.win32/.vs/
+
+# ---  VS  ---
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# ---  C++  ---
+*.o
+*.obj
+*.exe
+*.out
+*.so
+*.a
+*.lib
+*.dll
+
+# ---  日志  ---
+*.tlog
+*.log
+*.out
+*.err
