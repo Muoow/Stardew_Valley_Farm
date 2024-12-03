@@ -10,7 +10,7 @@ constexpr int MEDIUM_RESOLUTION_HEIGHT = 720;                             // 中
 constexpr int LARGE_RESOLUTION_WIDTH = 1920;                              // 大分辨率宽度
 constexpr int LARGE_RESOLUTION_HEIGHT = 1080;                             // 大分辨率高度
 constexpr float FRAME_RATE = 60.0f;                                       // 应用程序帧率
-const std::string APPLICATION_TITLE = u8"星露谷物语 Stardew Valley";      // 应用程序标题
+const std::string APPLICATION_TITLE = "星露谷物语Stardew Valley";          // 应用程序标题
 
 
 
