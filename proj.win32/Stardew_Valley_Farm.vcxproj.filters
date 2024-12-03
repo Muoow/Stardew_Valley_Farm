@@ -90,6 +90,9 @@
     <ClCompile Include="..\Classes\Player\SkillTree.cpp">
       <Filter>Classes\Player</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Scene\TestScene.cpp">
+      <Filter>Classes\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate\AppDelegate.h">
@@ -145,6 +148,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Player\SkillTree.h">
       <Filter>Classes\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\TestScene.h">
+      <Filter>Classes\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

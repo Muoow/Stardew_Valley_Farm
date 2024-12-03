@@ -9,7 +9,7 @@
 
 #include "AppDelegate.h"
 #include "proj.win32/Constant.h"
-#include "Scene/HelloWorldScene.h"
+// #include "Scene/HelloWorldScene.h"
 #include "Scene/MenuScene.h"
 
 // #define USE_AUDIO_ENGINE 1
