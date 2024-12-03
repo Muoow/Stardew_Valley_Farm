@@ -25,6 +25,7 @@ proj.win32/.vs/
 *.dll
 
 # ---  日志  ---
+*.tlog/
 *.tlog
 *.log
 *.out
