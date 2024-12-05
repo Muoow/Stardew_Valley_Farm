@@ -56,8 +56,8 @@ bool MenuScene::init()
     newGameButton->addTouchEventListener([](Ref* sender, cocos2d::ui::Widget::TouchEventType type) {
         if (type == cocos2d::ui::Widget::TouchEventType::BEGAN) {
 
-
-            
+            Scene* game = FarmYardScene::create();
+            Director::getInstance()->replaceScene(game);
         }
         });
 

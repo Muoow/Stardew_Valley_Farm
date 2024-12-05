@@ -27,13 +27,15 @@ public:
     virtual bool init();
 
     // 每一帧被自动调用的 update 方法
-    virtual void update(float delta);
+    virtual void update(float dt);
 
     // 实现 FarmYardScene 类的 create 方法
     CREATE_FUNC(FarmYardScene);
 
+    // 获取背景层 未完成
+    void getLayerBackground();
 private:
-
+    cocos2d::TMXTiledMap* map;
 };
 
 #endif // _FARM_YARD_SCENE_H_

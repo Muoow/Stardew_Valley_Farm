@@ -20,13 +20,15 @@ public:
     virtual bool init();
 
     // 每一帧被自动调用的 update 方法
-    virtual void update(float delta);
+    virtual void update(float dt);
 
     // 实现 FarmHouseScene 类的 create 方法
     CREATE_FUNC(FarmHouseScene);
 
-private:
 
+
+private:
+    cocos2d::TMXTiledMap* map;
 };
 
 #endif // _FARM_HOUSE_SCENE_H_

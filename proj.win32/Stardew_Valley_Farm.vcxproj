@@ -202,6 +202,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
   <ItemGroup>
     <ResourceCompile Include="Icon.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resources\Scenes\FarmYardScene\Farm_map_simple.tmx" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -158,4 +158,9 @@
       <Filter>Resource</Filter>
     </ResourceCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resources\Scenes\FarmYardScene\Farm_map_simple.tmx">
+      <Filter>Resource</Filter>
+    </None>
+  </ItemGroup>
 </Project>
