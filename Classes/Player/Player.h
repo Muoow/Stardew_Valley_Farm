@@ -38,6 +38,12 @@ public:
     void setSpeed(const float speed);
     float getSpeed() const;
 
+    // 建立图集
+    void setPlayerFrame();
+
+    // 更新帧动画
+    void updateFrame(float delta);
+
 private:
     Player();  // 构造函数私有化
     ~Player(); // 析构函数私有化
@@ -49,7 +55,13 @@ private:
     cocos2d::Vec2 _direction; // 玩家移动方向向量
     float _speed;             // 玩家速度
 
+    cocos2d::Vec2 _position;  // 玩家当前坐标
+
     cocos2d::EventListenerKeyboard* _keyboardListener; // 键盘监听器
+
+    float _timelast;          // 按键按下持续时间
+
+    int _currentFrame = 1;    // 当前帧
 
     static Player* _instance; // 静态实例指针
 };

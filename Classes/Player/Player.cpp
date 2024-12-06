@@ -55,6 +55,8 @@ bool Player::init()
         return false;
     }
 
+    setPlayerFrame();
+
     // 注册 update
     this->scheduleUpdate();
 
@@ -92,7 +94,22 @@ float Player::getSpeed() const
 // 每帧更新
 void Player::update(float delta) 
 {
-    
+    // 调用sprite的update函数同步更新
+    Sprite::update(delta);
+
+    // 获取玩家位置
+    _position = Sprite::getPosition();
+    // 移动玩家位置
+    if (_direction != Vec2::ZERO) 
+    {
+        setSpeed(5);
+        this->setPosition(_position.x + _direction.x * _speed, _position.y + _direction.y * _speed);
+        _position.x += _direction.x * _speed;
+        _position.y += _direction.y * _speed;
+        setSpeed(0);
+    }
+    updateFrame(delta);
+
 }
 
 void Player::registerKeyboardListener()
@@ -148,4 +165,59 @@ void Player::registerKeyboardListener()
 void Player::destroyInstance() 
 {
     CC_SAFE_DELETE(_instance);
+}
+
+void Player::setPlayerFrame()
+{
+    auto tex = Director::getInstance()->getTextureCache()->addImage("Player.png");
+    SpriteFrame* tframe;
+    for (int i = 0; i < 4; i++)
+    {
+        auto tname = new char[10];
+        for (int j = 0; j < 4; j++) 
+        {
+            sprintf(tname, "role_%d", i * 4 + j + 1);
+            tframe = SpriteFrame::createWithTexture(tex, Rect(32 * j, 48 * i, 32, 48));
+            SpriteFrameCache::getInstance()->addSpriteFrame(tframe, tname);
+        }
+    }
+    Sprite::initWithSpriteFrameName("role_1");
+}
+
+void Player::updateFrame(float delta)
+{
+    int _framebasic;
+    if (_direction == Vec2(1, 0))
+        _framebasic = 9;
+    else if (_direction == Vec2(-1, 0))
+        _framebasic = 5;
+    else if (_direction == Vec2(0, 1))
+        _framebasic = 13;
+    else
+        _framebasic = 1;
+
+    if (_currentFrame < _framebasic || _currentFrame >= _framebasic + 4)
+        _currentFrame = _framebasic;
+
+    if (_direction != Vec2::ZERO) 
+    {
+        _timelast += delta;
+        if (_timelast > 0.1f)
+        {
+            _timelast -= 0.1f;
+            ++_currentFrame;
+            if (_currentFrame > 3 + _framebasic)
+            {
+                _currentFrame = _framebasic;
+            }
+            char* texName = new char[10];
+            sprintf(texName, "role_%d", _currentFrame);
+            setSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName(texName));
+            delete texName;
+        }
+    }
+    else 
+    {
+        _timelast = 0;
+    }
 }
