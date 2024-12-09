@@ -7,6 +7,7 @@
  ****************************************************************/
 #include "../Player/Player.h"
 #include "FarmYardScene.h"
+#include "../Music/AudioPlayer.h"
 
 USING_NS_CC;
 
@@ -25,6 +26,9 @@ bool FarmYardScene::init()
 	if (!Scene::init()) {
 		return false;
 	}
+
+	//开启背景音乐
+	audioPlayer("Music/backgroundTheme.mp3", 1);
 
 	// 创建摄像机
 	_camera = Camera::create();
