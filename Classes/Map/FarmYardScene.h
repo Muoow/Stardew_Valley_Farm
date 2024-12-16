@@ -40,8 +40,6 @@ public:
 private:
     // 定义摄像机
     cocos2d::Camera* _camera;
-
-    GameTime* gametime;
 };
 
 #endif // _FARM_YARD_SCENE_H_

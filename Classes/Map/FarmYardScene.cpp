@@ -28,7 +28,7 @@ bool FarmYardScene::init()
 	}
 
 	// 创建计时
-	gametime = GameTime::getInstance();
+	auto gametime = GameTime::getInstance();
 	gametime->start();
 
 	// 创建摄像机
@@ -250,8 +250,9 @@ void FarmYardScene::update(float delta)
 	{
 		removelabel->removeFromParentAndCleanup(true);
 	}
-	auto timeLabel = Label::createWithSystemFont(gametime->toString(), "Arial", 30);
-	timeLabel->setPosition(Vec2(_camera->getPosition3D().x + Director::getInstance()->getVisibleSize().width / 2 - timeLabel->getContentSize().width, _camera->getPosition3D().y + Director::getInstance()->getVisibleSize().height / 2 - timeLabel->getContentSize().height));
+	auto gametime = GameTime::getInstance();
+	auto timeLabel = Label::createWithSystemFont(gametime->toString() + gametime->judgeTime(), "Arial", 30);
+	timeLabel->setPosition(Vec2(_camera->getPosition3D().x + Director::getInstance()->getVisibleSize().width / 2 - timeLabel->getContentSize().width, _camera->getPosition3D().y + Director::getInstance()->getVisibleSize().height / 2 - timeLabel->getContentSize().height));	
 	this->addChild(timeLabel, 10, "timelabel");
 	timeLabel->setCameraMask(unsigned short(CameraFlag::USER1));
 

@@ -29,7 +29,7 @@ private:
 	bool running;     
 
 	// 构造函数
-	GameTime(int y = 2024, int m = 1, int d = 1, int h = 0, int min = 0, double speed = 1.0);
+	GameTime(int y = 1, int m = 1, int d = 1, int h = 6, int min = 0, double speed = 1.0);
 	// 规范化时间和日期
 	void normalize();
 	// 自动更新线程
@@ -55,6 +55,12 @@ public:
 
 	// 以字符串形式获取时间信息
 	std::string toString() const;
+
+	// 判断当前时间
+	std::string judgeTime();
+
+	// 到达下一天
+	void setnextday();
 };
 
 #endif // _GAME_TIME_H_

@@ -54,7 +54,7 @@ void GameTime::normalize()
 		}
 	}
 	// 如果时间有错就重新更新
-	if (minute > 60 || hour >= 24 || day > 30 || month > 4) 
+	if (minute >= 60 || hour >= 24 || day > 30 || month > 4) 
 	{
 		GameTime::normalize();
 	}
@@ -105,4 +105,27 @@ std::string GameTime::toString() const
 	_time += " ";
 	_time += (minute < 10) ? "0" + std::to_string(minute) : std::to_string(minute);
 	return _time;
+}
+
+std::string GameTime::judgeTime()
+{
+	if (hour >= 6 && hour < 18) 
+	{
+		return "day";
+	}
+	else if (hour>=18) 
+	{
+		return "night";
+	}
+	else 
+	{
+		return "midnight";
+	}
+}
+
+void GameTime::setnextday() 
+{
+	minute = 0;
+	hour = 6;
+	day++;
 }
