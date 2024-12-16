@@ -8,6 +8,7 @@
 #include "../Player/Player.h"
 #include "FarmYardScene.h"
 #include "../GameTime/GameTime.h"
+#include "Classes/NPC/ChatLayer.h"
 
 USING_NS_CC;
 
@@ -81,6 +82,23 @@ bool FarmYardScene::init()
 
 	// 启动每帧更新函数
 	this->scheduleUpdate();
+	
+	// 设置对话框示例
+	// 设置对话框背景
+	auto background = Sprite::create("chatlayerbackground.png");
+	ChatLayer* popupLayer = ChatLayer::create("chatlayerbackground.png", background->getContentSize());
+	// 设置对话框元素
+	popupLayer->setauto("Hello Popup", "This is a custom popup layer example.", "好的");
+	// 将 PopupLayer 添加到当前场景中
+	this->addChild(popupLayer, 10, "popupLayer");
+	// 设置对话框位置
+	popupLayer->setPosition(player->getPosition() - Director::getInstance()->getWinSize() / 2);
+	// 设置对话框中各元素可以被camera捕捉
+	popupLayer->setCameraMask(unsigned short(CameraFlag::USER1));
+	popupLayer->getSprite9BackGround()->setCameraMask(unsigned short(CameraFlag::USER1));
+	popupLayer->getLabelTitle()->setCameraMask(unsigned short(CameraFlag::USER1));
+	popupLayer->getLabelContentText()->setCameraMask(unsigned short(CameraFlag::USER1));
+	popupLayer->getMenuButton()->setCameraMask(unsigned short(CameraFlag::USER1));
 
 	return true;
 }

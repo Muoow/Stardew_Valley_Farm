@@ -11,6 +11,7 @@
 #include "../Music/AudioPlayer.h"
 #include "SaveLoadScene.h"
 #include "proj.win32/Constant.h"
+#include "Classes/NPC/ChatLayer.h"
 
 USING_NS_CC;
 
@@ -22,8 +23,6 @@ Scene* MenuScene::createScene()
     scene->addChild(layer);
     return scene;
 }
-
-// 初始化场景
 bool MenuScene::init()
 {
     // 创建场景
@@ -64,9 +63,11 @@ bool MenuScene::init()
 
     loadGameButton->addTouchEventListener([](Ref* sender, cocos2d::ui::Widget::TouchEventType type) {
         if (type == cocos2d::ui::Widget::TouchEventType::BEGAN) {
-
-
-            
+            auto background = Sprite::create("chatlayerbackground.png");
+            ChatLayer* popupLayer = ChatLayer::create("chatlayerbackground.png",background->getContentSize());
+            popupLayer->setauto("Hello Popup", "This is a custom popup layer example.", "好的");
+            // 将 PopupLayer 添加到当前场景中
+            Director::getInstance()->getRunningScene()->addChild(popupLayer);
         }
         });
 
