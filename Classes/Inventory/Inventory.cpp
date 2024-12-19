@@ -70,14 +70,37 @@ void Inventory::changeCurrHeldItem(int change)
 	currentHeldItemIndex %= DEFAULT_BAR;
 }
 
-#if 0
 
 void Inventory::addItem(std::shared_ptr<Item> item, int quantity)
 {
 	// 先检查背包里有没有这种物品
 	// 如果有那么修改数量
 	// 如果没有那就新增这个物品
+	for (int i = 0; i < slots.size(); i++)
+	{
+		auto slot = slots[i];
+		// 若存在空位
+		if (slots[i].isEmpty()) 
+		{
+			slot.setItem(item, quantity);
+			break;
+		}
+		// 若不为空且找到
+		if (slot.getItem() == item) 
+		{
+			if (item->getMaxStack() >= quantity + slot.getQuantity()) 
+			{
+				slot.changeQuantity(0 - quantity);
+			}
+			else 
+			{
+				slot.changeQuantity(slot.getQuantity() - item->getMaxStack());
+			}
+		}
+	}
+
 }
+#if 0
 
 bool Inventory::isItemEnough(std::shared_ptr<Item> item, int quantity)
 {
@@ -108,7 +131,22 @@ bool Inventory::isCoinEnough(int price)
 	return coin >= price;
 }
 
-void Inventory::changeCoimn(int amount)
+void Inventory::changeCoin(int amount)
 {
 	coin += amount;
+}
+
+int Inventory::getCoin() 
+{
+	return coin;
+}
+
+bool Inventory::isSlotFull() 
+{
+	for (int i = 0; i < slots.size(); ++i) 
+	{
+		if (slots[i].isEmpty())
+			return false;
+	}
+	return true;
 }

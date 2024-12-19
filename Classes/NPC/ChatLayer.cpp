@@ -136,12 +136,24 @@ void ChatLayer::eventButtonCallBack(Ref* pSender)
         storebackground->setContentSize(Size(winSize.width, winSize.height - 3.5 * this->getChildByName("menu")->getChildByName("quitButton")->getBoundingBox().size.height));
         storebackground->setAnchorPoint(Vec2(0, 0));
         storebackground->setPosition(Vec2(0, 3.5 * this->getChildByName("menu")->getChildByName("quitButton")->getBoundingBox().size.height));
+        storebackground->setOpacity(128);
         this->addChild(storebackground, 0, "storebackground");
         // 更改事件文本
         auto content1 = dynamic_cast<Label*>(this->getChildByName("eventButtonContent"));
         content1->setString("quitstore");
-        // 设置摄像机显示
-        this->setCameraMask(unsigned short(CameraFlag::USER1));
+
+        // 打开商店
+        auto shop = ShopLayer::create();
+#if 1
+        auto npc = NPC::create("Player/Sandy.png", ALEX);
+        this->addChild(npc);
+#endif
+        shop->setNPC(npc);
+        auto item = new Item(CROP, "defaulthead.png", 64, 1);
+        shop->InsertShopItems(item, 10);
+        shop->UpdateShopItems();
+        this->addChild(shop, 3,"shop");
+
     }
     else 
     {
@@ -149,6 +161,9 @@ void ChatLayer::eventButtonCallBack(Ref* pSender)
 
         // 关闭购买/制作界面
         this->removeChildByName("storebackground");
+        auto shop = dynamic_cast<ShopLayer*>(this->getChildByName("shop"));
+        shop->DeleteShop();
+        this->removeChildByName("shop");
         // 更改事件文本
         auto content1 = dynamic_cast<Label*>(this->getChildByName("eventButtonContent"));
         content1->setString("EVENT");

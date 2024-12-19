@@ -17,12 +17,22 @@ bool GameTimeLayer::init()
 		return false;
 	}
 
-	// 设置时间显示背景
-	timeIcon = Sprite::create("defaulthead.png");
-	timeIcon->setPosition(Vec2(50, 50));  // 固定图标位置
-	this->addChild(timeIcon);
+	GameTime::getInstance()->start();
 
 	// 设置时间
+	timeLabel = Label::createWithSystemFont(GameTime::getInstance()->toString(), "Arial", 30);
+	timeLabel->setColor(ccc3(0, 0, 0));
+	timeLabel->setAnchorPoint(Vec2(0,0.5));
+	timeLabel->setPosition(Vec2(50, 50)); // 固定图标位置
+
+	// 设置时间显示背景
+	timeIcon = Sprite::create("chatlayerbackground2.png");
+	timeIcon->setAnchorPoint(Vec2(0, 0.5));
+	timeIcon->setContentSize(timeLabel->getContentSize() + Size(0,5));
+	timeIcon->setPosition(timeLabel->getPosition());
+	this->addChild(timeIcon);
+
+	this->addChild(timeLabel);
 
 	// 每秒更新一次时间
 	this->schedule([this](float deltaTime) {
@@ -35,60 +45,5 @@ bool GameTimeLayer::init()
 void GameTimeLayer::updateTime(float delta)
 {
 	// 更新 timeLabel
+	timeLabel->setString(GameTime::getInstance()->toString());
 }
-
-#if 0
- 
-GameTimeLayer* GameTimeLayer::getInstance()
-{
-	if (instance == nullptr) {
-		// 使用 nothrow 分配内存
-		instance = new (std::nothrow) GameTimeLayer();
-		// 初始化失败则销毁实例
-		if (!instance) {
-			CC_SAFE_DELETE(instance);
-		}
-	}
-	return instance;
-}
-
-void GameTimeLayer::GameTimeLayerUpdate(Camera* camera) 
-{
-	// 更新时间显示
-	clean("timelabel");
-	gametime = GameTime::getInstance();
-	timeLabel = Label::createWithSystemFont(gametime->toString(), "Arial", 30);
-	float cameraWidth = Director::getInstance()->getVisibleSize().width * (camera->getPosition3D().z / DEFAULT_VIEW_HEIGHT);
-	float cameraHeight = Director::getInstance()->getVisibleSize().height * (camera->getPosition3D().z / DEFAULT_VIEW_HEIGHT);
-	timeLabel->setPosition(camera->getPosition() + Vec2(240, 180) * (camera->getPosition3D().z / DEFAULT_VIEW_HEIGHT));
-	this->addChild(timeLabel, 10, "timelabel");
-	timeLabel->setCameraMask(unsigned short(CameraFlag::USER1));
-
-	// 添加时间显示的背景
-	clean("layercolor");
-	layercolor = LayerColor::create(Color4B(0, 255, 0, 128));
-	layercolor->setContentSize(Size(timeLabel->getContentSize().width, timeLabel->getContentSize().height + 5));
-	layercolor->setAnchorPoint(Vec2(0, 0));
-	layercolor->setPosition(timeLabel->getPosition() - timeLabel->getContentSize() / 2);
-	this->addChild(layercolor, 8, "layercolor");
-	layercolor->setCameraMask(unsigned short(CameraFlag::USER1));
-	// 添加时间显示的外框
-	clean("sprite");
-	sprite = Sprite::create("chatBox.png");
-	sprite->setContentSize(layercolor->getContentSize());
-	sprite->setAnchorPoint(Vec2(0, 0));
-	sprite->setPosition(timeLabel->getPosition() - timeLabel->getContentSize() / 2);
-	this->addChild(sprite, 9, "sprite");
-	sprite->setCameraMask(unsigned short(CameraFlag::USER1));
-}
-
-void GameTimeLayer::clean(std::string name) 
-{
-	auto removelabel = this->getChildByName(name);
-	if (removelabel != nullptr)
-	{
-		removelabel->removeFromParentAndCleanup(true);
-	}
-}
-
-#endif

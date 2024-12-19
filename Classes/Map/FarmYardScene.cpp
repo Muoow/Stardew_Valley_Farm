@@ -41,14 +41,6 @@ bool FarmYardScene::init()
 	camera->setPosition3D(currentPos);
 	this->addChild(camera);
 
-#if 0
-	// 创建计时
-	GameTime::getInstance()->start();
-	auto gametimeLayer = GameTimeLayer::getInstance();
-	this->addChild(gametimeLayer, 10);
-	gametimeLayer->setCameraMask(unsigned short(CameraFlag::USER1));
-#endif
-
 	// 加载瓦片地图
 	auto FarmYard = TMXTiledMap::create("Maps/FarmYardScene.tmx");
 	if (!FarmYard) {
@@ -241,11 +233,6 @@ void FarmYardScene::update(float delta)
 	Vec2 newtile = convertToTileCoords(newPosition);
 	Vec2 faceto = player->getFaceto();
 	targettile->setPosition(Vec2((newtile.x + faceto.x) * MAP_TILE_WIDTH, (FARMYARD_MAP_HEIGHT - newtile.y+ faceto.y) * MAP_TILE_HEIGHT));
-
-#if 0
-	//更新时间
-	GameTimeLayer::getInstance()->GameTimeLayerUpdate(camera);
-#endif
 
 	// 计算摄像头目标位置
 	Vec3 targetCameraPos(newPosition.x, newPosition.y, currentCameraPos.z);

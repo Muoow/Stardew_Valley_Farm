@@ -10,6 +10,7 @@
 #include "FarmYardScene.h"
 #include "../Player/Player.h"
 #include "proj.win32/Constant.h"
+#include "../GameTime/GameTimeLayer.h"
 
 USING_NS_CC;
 

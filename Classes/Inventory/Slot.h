@@ -5,6 +5,7 @@
  * Author:        张翔
  * Update Date:   2024/12/7
  ****************************************************************/
+#pragma once
 #include <memory>
 #include "../Item/Item.h"
 

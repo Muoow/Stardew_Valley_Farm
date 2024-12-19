@@ -44,6 +44,9 @@ public:
 	// 判断物品是否足够
 	bool isItemEnough(std::shared_ptr<Item> item, int quantity);
 
+	// 判断槽位是否已满
+	bool isSlotFull();
+
 	// 修改物品数量
 	void changeItemQuantity(std::shared_ptr<Item> item, int quantity);
 
@@ -53,8 +56,11 @@ public:
 	// 判断金钱是否足够
 	bool isCoinEnough(int price);
 
+	// 获取当前金钱数量
+	int getCoin();
+
 	// 修改金币数量
-	void changeCoimn(int amount);
+	void changeCoin(int amount);
 
 private:
 	Inventory();

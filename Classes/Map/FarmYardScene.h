@@ -5,12 +5,12 @@
  * Author:        张翔
  * Update Date:   2024/12/5
  ****************************************************************/
-
+#pragma once
 #ifndef _FARM_YARD_SCENE_H_
 #define _FARM_YARD_SCENE_H_
 
 #include "cocos2d.h"
-#include "../GameTime/GameTime.h"
+
 
 class FarmYardScene : public cocos2d::Scene {
 public:
